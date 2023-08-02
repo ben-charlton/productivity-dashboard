@@ -1,8 +1,11 @@
-package backend.src.main.java.services;
-import backend.src.main.java.dto.GoalStatisticsDto;
-import backend.src.main.java.models.Goal;
-import backend.src.main.java.repositories.GoalRepository;
+package services;
 
+import dto.GoalStatisticsDto;
+import models.Goal;
+import repositories.GoalRepository;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
 @Service
 public class GoalService {
     private final GoalRepository goalRepository;
@@ -28,7 +31,7 @@ public class GoalService {
         List<Goal> goals = goalRepository.findAllByUserId(userId);
     
         int totalHoursWorked = goals.stream().mapToInt(Goal::getCurrentHourProgress).sum();
-        double completionRate = (double) goals.stream().filter(goal -> goal.getCurrentHourProgress() >= goal.getDesiredHourTarget()).count() / goals.size();
+        double completionRate = (double) goals.stream().filter(goal -> goal.getCurrentHourProgress() >= goal.getDesiredHours()).count() / goals.size();
         List<Integer> progressOverTime = goals.stream().map(Goal::getCurrentHourProgress).collect(Collectors.toList());
     
         return new GoalStatisticsDto(totalHoursWorked, completionRate, progressOverTime);

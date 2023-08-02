@@ -1,0 +1,6 @@
+repositories/GoalRepository.class
+models/Goal.class
+controllers/GoalController.class
+dto/GoalStatisticsDto.class
+GoalTrackerApp.class
+services/GoalService.class

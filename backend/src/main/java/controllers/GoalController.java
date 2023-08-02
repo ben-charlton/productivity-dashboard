@@ -1,8 +1,19 @@
-import backend.src.main.java.models.Goal;
-import backend.src.main.java.models.GoalService;
-import backend.src.main.java.models.GoalStatisticsDto;
+package controllers;
 
-package backend.src.main.java.controllers;
+import models.Goal;
+import services.GoalService;
+import dto.GoalStatisticsDto;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
+
+
 @RestController
 @RequestMapping("/goals")
 public class GoalController {
@@ -30,5 +41,5 @@ public class GoalController {
     @GetMapping("/user/{userId}/statistics")
     public GoalStatisticsDto getGoalStatisticsForUser(@PathVariable Long userId) {
     return goalService.getGoalStatisticsForUser(userId);
-}
+    }
 }

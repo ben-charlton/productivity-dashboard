@@ -12,3 +12,5 @@ EXPOSE 8080
 
 # Start the Spring Boot app when the container starts
 CMD ["java", "-jar", "your-backend-app.jar"]
+
+# cmd : docker build -t your-backend-image-name .
